@@ -6,20 +6,25 @@
   <title>Breanna Frazier | AI Resume &amp; Role Matcher</title>
   <style>
     :root {
-      --bg-top: #0b1120;
-      --bg-bottom: #111827;
-      --card: rgba(30, 41, 59, 0.92);
+      --bg-top: #070b19;
+      --bg-bottom: #0f172a;
+      --card: rgba(23, 33, 54, 0.92);
+      --panel-left: rgba(14, 165, 233, 0.06);
+      --panel-right: rgba(168, 85, 247, 0.07);
       --text: #f8fafc;
       --muted: #94a3b8;
-      --accent: #38bdf8;
-      --accent-hover: #7dd3fc;
-      --success-bg: rgba(34, 197, 94, 0.15);
-      --success-text: #86efac;
-      --success-border: rgba(34, 197, 94, 0.35);
-      --warn-bg: rgba(249, 115, 22, 0.15);
+      --cyan: #38bdf8;
+      --indigo: #818cf8;
+      --purple: #c084fc;
+      --emerald: #34d399;
+      --amber: #fb923c;
+      --success-bg: rgba(16, 185, 129, 0.14);
+      --success-text: #6ee7b7;
+      --success-border: rgba(52, 211, 153, 0.35);
+      --warn-bg: rgba(249, 115, 22, 0.14);
       --warn-text: #fdba74;
-      --warn-border: rgba(249, 115, 22, 0.35);
-      --border: rgba(148, 163, 184, 0.2);
+      --warn-border: rgba(251, 146, 60, 0.35);
+      --border: rgba(148, 163, 184, 0.22);
     }
 
     * {
@@ -31,72 +36,109 @@
       margin: 0;
       min-height: 100vh;
       background:
-        radial-gradient(circle at top right, rgba(56, 189, 248, 0.16), transparent 45%),
+        radial-gradient(circle at 12% 10%, rgba(56, 189, 248, 0.2), transparent 38%),
+        radial-gradient(circle at 88% 15%, rgba(168, 85, 247, 0.2), transparent 40%),
+        radial-gradient(circle at 50% 95%, rgba(16, 185, 129, 0.12), transparent 45%),
         linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
       color: var(--text);
-      padding: 2.5rem 1rem;
+      padding: 2.5rem 1rem 3.5rem;
       line-height: 1.55;
     }
 
     .container {
-      max-width: 1020px;
+      max-width: 1060px;
       margin: 0 auto;
     }
 
+    /* Hero Banner with Stock Photo + Gradient Overlay */
     .hero {
+      position: relative;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+      gap: 1.75rem;
+      background:
+        linear-gradient(125deg, rgba(11, 18, 36, 0.94) 35%, rgba(30, 27, 75, 0.86) 100%),
+        url("https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+      border: 1px solid rgba(129, 140, 248, 0.35);
+      border-top: 3px solid var(--cyan);
+      border-radius: 18px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.42);
     }
 
     .badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
       font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--accent);
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 0.25rem 0.65rem;
+      color: #e0f2fe;
+      background: linear-gradient(90deg, rgba(14, 165, 233, 0.28), rgba(168, 85, 247, 0.28));
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      padding: 0.3rem 0.8rem;
       border-radius: 999px;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.75rem;
     }
 
     h1 {
-      margin: 0 0 0.35rem;
-      font-size: 1.85rem;
+      margin: 0 0 0.45rem;
+      font-size: 2rem;
       letter-spacing: -0.02em;
+      background: linear-gradient(90deg, #ffffff 0%, #bae6fd 55%, #e9d5ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .subtitle {
-      color: var(--muted);
+      color: #cbd5e1;
       margin: 0;
-      font-size: 0.96rem;
+      font-size: 0.98rem;
+      max-width: 620px;
     }
 
     .hero-media {
       display: flex;
-      gap: 0.75rem;
+      align-items: center;
+      gap: 0.85rem;
       flex-shrink: 0;
     }
 
-    .hero-img {
-      width: 130px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 1px solid var(--border);
+    .hero-img-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+      background: #0f172a;
     }
 
-    @media (max-width: 760px) {
+    .hero-img {
+      display: block;
+      width: 165px;
+      height: 112px;
+      object-fit: cover;
+    }
+
+    .img-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.55rem;
+      background: linear-gradient(180deg, transparent, rgba(7, 11, 25, 0.92));
+      color: #e2e8f0;
+    }
+
+    @media (max-width: 820px) {
       .hero {
         flex-direction: column;
         align-items: flex-start;
@@ -106,115 +148,262 @@
         width: 100%;
       }
 
-      .hero-img {
+      .hero-img-card {
         flex: 1;
-        height: 140px;
+      }
+
+      .hero-img {
+        width: 100%;
+        height: 130px;
       }
     }
 
+    /* Section Divider */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.75rem 0 1.25rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.35), transparent);
+    }
+
+    /* Main Form Card */
     form {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.5rem;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      border-radius: 18px;
+      padding: 1.75rem;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
     }
 
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
+      gap: 1.5rem;
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 780px) {
       .grid {
         grid-template-columns: 1fr;
       }
     }
 
+    .input-panel {
+      border-radius: 14px;
+      padding: 1.15rem;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .panel-resume {
+      background: var(--panel-left);
+      border-top: 3px solid var(--cyan);
+    }
+
+    .panel-target {
+      background: var(--panel-right);
+      border-top: 3px solid var(--purple);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+    }
+
+    .pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.18rem 0.55rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .pill-cyan {
+      background: rgba(56, 189, 248, 0.18);
+      color: var(--cyan);
+    }
+
+    .pill-purple {
+      background: rgba(192, 132, 252, 0.18);
+      color: var(--purple);
+    }
+
     label {
       display: block;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-      color: #e2e8f0;
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: #f1f5f9;
     }
 
     .helper {
       display: block;
       font-size: 0.84rem;
       color: var(--muted);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
     textarea {
       width: 100%;
       min-height: 270px;
-      padding: 0.9rem;
+      padding: 0.95rem;
       border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--bg-top);
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(7, 11, 25, 0.85);
       color: var(--text);
       font-size: 0.92rem;
+      line-height: 1.5;
       resize: vertical;
     }
 
-    textarea:focus {
-      outline: 2px solid var(--accent);
+    .panel-resume textarea:focus {
+      outline: 2px solid var(--cyan);
+      border-color: transparent;
+    }
+
+    .panel-target textarea:focus {
+      outline: 2px solid var(--purple);
       border-color: transparent;
     }
 
     .actions {
-      margin-top: 1.25rem;
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.15);
       display: flex;
-      justify-content: flex-end;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
-    button {
-      background: var(--accent);
-      color: #082f49;
+    .sample-btn {
+      background: rgba(148, 163, 184, 0.14);
+      color: #e2e8f0;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      font-weight: 600;
+      padding: 0.72rem 1.15rem;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .sample-btn:hover {
+      background: rgba(148, 163, 184, 0.24);
+      border-color: var(--purple);
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 55%, #a855f7 100%);
+      color: #ffffff;
       font-weight: 700;
       border: none;
-      padding: 0.8rem 1.6rem;
+      padding: 0.85rem 1.85rem;
       border-radius: 10px;
       font-size: 0.98rem;
       cursor: pointer;
-      transition: background 0.15s ease;
+      box-shadow: 0 8px 22px rgba(99, 102, 241, 0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    button:hover {
-      background: var(--accent-hover);
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(168, 85, 247, 0.45);
     }
 
+    /* Results Card */
     .results {
-      margin-top: 1.75rem;
+      display: none;
+      margin-top: 1.25rem;
       background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.5rem;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(129, 140, 248, 0.35);
+      border-top: 3px solid var(--emerald);
+      border-radius: 18px;
+      padding: 1.75rem;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
     }
 
     .error {
-      color: #fca5a5;
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      padding: 0.9rem 1rem;
-      border-radius: 10px;
+      color: #fecaca;
+      background: rgba(239, 68, 68, 0.16);
+      border: 1px solid rgba(239, 68, 68, 0.45);
+      padding: 1rem 1.15rem;
+      border-radius: 12px;
+      font-weight: 500;
     }
 
-    .score-box {
+    .score-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(16, 185, 129, 0.12));
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .score-left {
       display: flex;
       align-items: baseline;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
+      gap: 0.85rem;
     }
 
     .score-value {
-      font-size: 2.5rem;
+      font-size: 2.75rem;
       font-weight: 800;
-      color: var(--accent);
+      background: linear-gradient(90deg, var(--cyan), var(--emerald));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+
+    .progress-wrap {
+      flex: 1;
+      min-width: 220px;
+      max-width: 380px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--cyan), var(--indigo), var(--emerald));
+      transition: width 0.5s ease;
     }
 
     .keywords-grid {
@@ -223,24 +412,40 @@
       gap: 1.5rem;
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 780px) {
       .keywords-grid {
         grid-template-columns: 1fr;
       }
+    }
+
+    .result-box {
+      border-radius: 14px;
+      padding: 1.2rem;
+      border: 1px solid var(--border);
+    }
+
+    .box-matched {
+      background: rgba(16, 185, 129, 0.06);
+      border-top: 3px solid var(--emerald);
+    }
+
+    .box-missing {
+      background: rgba(249, 115, 22, 0.06);
+      border-top: 3px solid var(--amber);
     }
 
     .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-top: 0.6rem;
+      margin-top: 0.85rem;
     }
 
     .tag {
-      padding: 0.35rem 0.7rem;
+      padding: 0.36rem 0.75rem;
       border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 500;
+      font-size: 0.84rem;
+      font-weight: 600;
     }
 
     .tag-matched {
@@ -262,83 +467,269 @@
       <div>
         <span class="badge">AI Engineering Portfolio</span>
         <h1>Breanna Frazier — AI Resume &amp; Role Matcher</h1>
-        <p class="subtitle">Cross-analyze Breanna's resume against target keywords or a full job description using TF-IDF &amp; cosine similarity.</p>
+        <p class="subtitle">Cross-analyze Breanna's resume against target keywords or a full job description using TF-IDF vectorization &amp; cosine similarity.</p>
       </div>
       <div class="hero-media">
-        <img
-          src="{{ url_for('static', filename='profile.jpg') }}"
-          alt="Breanna Frazier portfolio photo"
-          class="hero-img"
-          onerror="this.style.display='none'"
-        />
-        <img
-          src="{{ url_for('static', filename='banner.jpg') }}"
-          alt="AI project showcase image"
-          class="hero-img"
-          onerror="this.style.display='none'"
-        />
+        <div class="hero-img-card">
+          <img
+            src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=600&q=80"
+            alt="AI and machine learning code analytics"
+            class="hero-img"
+          />
+          <span class="img-caption">NLP &amp; Vector Engine</span>
+        </div>
+        <div class="hero-img-card">
+          <img
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80"
+            alt="Data analytics dashboard visualization"
+            class="hero-img"
+          />
+          <span class="img-caption">Similarity Scoring</span>
+        </div>
       </div>
     </header>
 
-    <form method="POST">
+    <div class="section-divider">Step 1 · Configure Resume &amp; Target Role</div>
+
+    <form id="matcher-form">
       <div class="grid">
-        <div>
-          <label for="resume">Breanna Frazier's Resume</label>
+        <div class="input-panel panel-resume">
+          <div class="panel-header">
+            <label for="resume">Breanna Frazier's Resume</label>
+            <span class="pill pill-cyan">Candidate Source</span>
+          </div>
           <span class="helper">Pre-loaded from your resume—edit anytime to test tailored versions.</span>
-          <textarea id="resume" name="resume">{{ resume_input }}</textarea>
+          <textarea id="resume" name="resume">Breanna Frazier
+AI Engineer
+breannahfrazier@gmail.com | (864) 318-6686 | Anderson, SC
+
+Summary
+AI engineering (Associates) student at Maestro College. Supported SEO
+strategies and kept a customer database behind targeted email campaigns,
+part of 2+ years as a Marketing Assistant at SPECTRUM CHARTER
+COMMUNICATION. Earlier interpreted results from lab experiments.
+
+Experience
+Travel Nursing Manager | Home care. Travel | Jan 2025 - Present
+- Assess patient conditions and implement targeted nursing interventions,
+improving health outcomes and reducing hospital readmission rates
+- Deliver nursing care to patients in hospitals, clinics and long-term care
+facilities, ensuring consistent patient satisfaction and safety
+- Collaborated with interdisciplinary teams to develop care plans,
+tailoring solutions to each patient and improving continuity of care
+- Manage a team of 10-20
+
+Home Nurse | Anderson, SC | Jan 2025 - Feb 2026
+- Administered medications, treatments and therapies as prescribed by
+physicians, maintaining 100% compliance with protocols and accurate
+documentation
+- Monitored vital signs and assessed patient conditions, reporting changes
+to the healthcare team to ensure timely interventions
+- Delivered compassionate, personalized care to patients in their homes,
+enhancing comfort and well-being through attentive support
+- Supported patients with bathing, dressing, grooming and mobility as part
+of a team of 5-9, promoting independence and dignity
+
+Marketing Assistant | SPECTRUM CHARTER COMMUNICATION | Jan 2023 - Jan 2025
+| Malden, SC
+- Supported the development and execution of marketing campaigns across
+social media, email and content creation, increasing audience engagement
+- Contributed to implementing SEO strategies, improving organic search
+rankings on major search engines
+- Monitored competitor activity through market analysis, identifying
+opportunities for differentiation and strengthening marketing strategies
+- Maintained a customer database for targeted marketing, enabling
+personalized email campaigns and loyalty programs
+
+Biologistics | LABTECH DIAGNOSTICS | Jan 2019 - Jan 2023 | Anderson, SC
+- Assigned medical codes to patient records using ICD-10-CM, CPT and HCPCS
+systems, ensuring accuracy and compliance with industry standards
+- Collected, analyzed and interpreted data from lab experiments using
+advanced scientific equipment, supporting reliable diagnostic outcomes
+- Calibrated and maintained laboratory instruments, ensuring accuracy of
+test results and minimizing equipment downtime
+- Contributed to research report preparation by providing data analysis
+support, enhancing the quality and reliability of scientific publications
+
+Education
+Associate of Applied Science in AI Software Engineering | Maestro College |
+In progress
+Medical (Associates) | Greenville Tech | Feb 2020 | Greenville, SC
+
+Skills
+AI and data: Machine learning (ML) fundamentals, AI integration, AI,
+Generative AI, Data analytics, Data reporting, Data filtering, Database
+systems
+Tools & Domain: Data entry, Operations, Clerical experience, ICD-10-CM
+coding, HCPCS coding, CPT coding, Programming languages, APIs, Project team
+coordination, Team management, IT experience within healthcare, Process
+design, Home health, Nursing, Quality improvement, Operations management,
+Software coding, Technical writing, CRM systems, Software development, SEO,
+Microsoft Excel, Operations workflow management, Software engineering,
+Agile software development</textarea>
         </div>
-        <div>
-          <label for="target_input">Job Description or Target Keywords</label>
+
+        <div class="input-panel panel-target">
+          <div class="panel-header">
+            <label for="target_input">Job Description or Target Keywords</label>
+            <span class="pill pill-purple">Target Benchmark</span>
+          </div>
           <span class="helper">Paste a job posting or keywords (e.g., machine learning, APIs, healthcare data, SEO, Python).</span>
-          <textarea id="target_input" name="target_input" placeholder="Paste a job description or list of keywords here...">{{ target_input }}</textarea>
+          <textarea id="target_input" name="target_input" placeholder="Paste a job description or list of keywords here..."></textarea>
         </div>
       </div>
 
       <div class="actions">
-        <button type="submit">Cross-Analyze Resume</button>
+        <button type="button" id="load-sample" class="sample-btn">Load Sample AI Healthcare Role</button>
+        <button type="submit" class="primary-btn">Cross-Analyze Resume</button>
       </div>
     </form>
 
-    {% if result %}
-      <section class="results">
-        {% if result.error %}
-          <div class="error">{{ result.error }}</div>
-        {% else %}
-          <div class="score-box">
-            <span class="score-value">{{ result.score }}%</span>
+    <div id="results-divider" class="section-divider" style="display: none;">Step 2 · Similarity &amp; Keyword Gap Analysis</div>
+    <section id="results" class="results"></section>
+  </div>
+
+  <script>
+    const STOP_WORDS = new Set([
+      "a","about","above","after","again","against","all","am","an","and","any","are","as","at",
+      "be","because","been","before","being","below","between","both","but","by","can","could",
+      "did","do","does","doing","down","during","each","few","for","from","further","had","has",
+      "have","having","he","her","here","hers","herself","him","himself","his","how","i","if",
+      "in","into","is","it","its","itself","just","me","more","most","my","myself","no","nor",
+      "not","now","of","off","on","once","only","or","other","our","ours","ourselves","out",
+      "over","own","same","she","should","so","some","such","than","that","the","their","theirs",
+      "them","themselves","then","there","these","they","this","those","through","to","too",
+      "under","until","up","very","was","we","were","what","when","where","which","while","who",
+      "whom","why","will","with","would","you","your","yours","yourself","yourselves"
+    ]);
+
+    document.getElementById("load-sample").addEventListener("click", function () {
+      document.getElementById("target_input").value =
+        "Junior AI & Healthcare Data Engineer\n" +
+        "Seeking an AI Software Engineering graduate with experience in machine learning, generative AI, " +
+        "APIs, database systems, and data analytics. Background in healthcare operations, ICD-10-CM and CPT coding, " +
+        "quality improvement, technical writing, and agile software development preferred. Knowledge of Python and SQL is a plus.";
+    });
+
+    function tokenizeNgrams(text) {
+      const cleaned = text.toLowerCase().replace(/[^a-z0-9\s\+\#]/g, " ");
+      const words = cleaned.split(/\s+/).filter(w => w.length > 1 && !STOP_WORDS.has(w));
+      const tokens = [...words];
+      for (let i = 0; i < words.length - 1; i++) {
+        tokens.push(`${words[i]} ${words[i + 1]}`);
+      }
+      return tokens;
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement("div");
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    document.getElementById("matcher-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const resumeText = document.getElementById("resume").value.trim();
+      const targetText = document.getElementById("target_input").value.trim();
+      const resultsEl = document.getElementById("results");
+      const dividerEl = document.getElementById("results-divider");
+
+      dividerEl.style.display = "flex";
+      resultsEl.style.display = "block";
+
+      if (!resumeText || !targetText) {
+        resultsEl.innerHTML = `<div class="error">Please provide both resume content and target keywords or a job description.</div>`;
+        resultsEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        return;
+      }
+
+      const resumeTokens = tokenizeNgrams(resumeText);
+      const targetTokens = tokenizeNgrams(targetText);
+
+      if (!resumeTokens.length || !targetTokens.length) {
+        resultsEl.innerHTML = `<div class="error">Please enter valid keywords or text to analyze.</div>`;
+        return;
+      }
+
+      const resumeTF = {};
+      const targetTF = {};
+      resumeTokens.forEach(t => resumeTF[t] = (resumeTF[t] || 0) + 1);
+      targetTokens.forEach(t => targetTF[t] = (targetTF[t] || 0) + 1);
+
+      const vocab = new Set([...Object.keys(resumeTF), ...Object.keys(targetTF)]);
+      const resumeVec = {};
+      const targetVec = {};
+
+      vocab.forEach(term => {
+        const df = (resumeTF[term] ? 1 : 0) + (targetTF[term] ? 1 : 0);
+        const idf = Math.log((2 + 1) / (df + 1)) + 1;
+        resumeVec[term] = (resumeTF[term] || 0) * idf;
+        targetVec[term] = (targetTF[term] || 0) * idf;
+      });
+
+      let dot = 0, normA = 0, normB = 0;
+      vocab.forEach(term => {
+        dot += resumeVec[term] * targetVec[term];
+        normA += resumeVec[term] ** 2;
+        normB += targetVec[term] ** 2;
+      });
+
+      const similarity = (normA && normB) ? dot / (Math.sqrt(normA) * Math.sqrt(normB)) : 0;
+      const score = (similarity * 100).toFixed(2);
+      const barWidth = Math.min(100, Math.max(4, Number(score)));
+
+      const sortedTargetTerms = Object.keys(targetTF).sort((a, b) => targetVec[b] - targetVec[a]);
+      const matched = [];
+      const missing = [];
+
+      for (const term of sortedTargetTerms) {
+        if (resumeTF[term] && matched.length < 12) {
+          matched.push(term);
+        } else if (!resumeTF[term] && missing.length < 12) {
+          missing.push(term);
+        }
+      }
+
+      const matchedHtml = matched.length
+        ? matched.map(t => `<span class="tag tag-matched">✓ ${escapeHtml(t)}</span>`).join("")
+        : `<span class="subtitle">No overlapping top terms found.</span>`;
+
+      const missingHtml = missing.length
+        ? missing.map(t => `<span class="tag tag-missing">+ ${escapeHtml(t)}</span>`).join("")
+        : `<span class="subtitle">Strong coverage on top target terms!</span>`;
+
+      resultsEl.innerHTML = `
+        <div class="score-banner">
+          <div class="score-left">
+            <span class="score-value">${score}%</span>
             <span class="subtitle">Cosine Similarity Score</span>
           </div>
-
-          <div class="keywords-grid">
-            <div>
-              <h3 style="margin: 0; color: var(--success-text);">Matched Keywords &amp; Phrases</h3>
-              <div class="tags">
-                {% if result.matched %}
-                  {% for term in result.matched %}
-                    <span class="tag tag-matched">{{ term }}</span>
-                  {% endfor %}
-                {% else %}
-                  <span class="subtitle">No overlapping top terms found.</span>
-                {% endif %}
-              </div>
+          <div class="progress-wrap">
+            <div class="progress-label">
+              <span>Vector Alignment Strength</span>
+              <span>${score}%</span>
             </div>
-
-            <div>
-              <h3 style="margin: 0; color: var(--warn-text);">Missing High-Weight Terms</h3>
-              <div class="tags">
-                {% if result.missing %}
-                  {% for term in result.missing %}
-                    <span class="tag tag-missing">{{ term }}</span>
-                  {% endfor %}
-                {% else %}
-                  <span class="subtitle">Strong coverage on top target terms!</span>
-                {% endif %}
-              </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: ${barWidth}%;"></div>
             </div>
           </div>
-        {% endif %}
-      </section>
-    {% endif %}
-  </div>
+        </div>
+
+        <div class="keywords-grid">
+          <div class="result-box box-matched">
+            <h3 style="margin: 0; color: var(--success-text);">Matched Keywords &amp; Phrases</h3>
+            <div class="tags">${matchedHtml}</div>
+          </div>
+
+          <div class="result-box box-missing">
+            <h3 style="margin: 0; color: var(--warn-text);">Missing High-Weight Terms</h3>
+            <div class="tags">${missingHtml}</div>
+          </div>
+        </div>
+      `;
+
+      resultsEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  </script>
 </body>
 </html>
