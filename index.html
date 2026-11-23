@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breanna Frazier | AI Resume &amp; Role Matcher</title>
+  <style>
+    :root {
+      --bg-top: #0b1120;
+      --bg-bottom: #111827;
+      --card: rgba(30, 41, 59, 0.92);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --success-bg: rgba(34, 197, 94, 0.15);
+      --success-text: #86efac;
+      --success-border: rgba(34, 197, 94, 0.35);
+      --warn-bg: rgba(249, 115, 22, 0.15);
+      --warn-text: #fdba74;
+      --warn-border: rgba(249, 115, 22, 0.35);
+      --border: rgba(148, 163, 184, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.16), transparent 45%),
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+      color: var(--text);
+      padding: 2.5rem 1rem;
+      line-height: 1.55;
+    }
+
+    .container {
+      max-width: 1020px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      margin-bottom: 0.6rem;
+    }
+
+    h1 {
+      margin: 0 0 0.35rem;
+      font-size: 1.85rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin: 0;
+      font-size: 0.96rem;
+    }
+
+    .hero-media {
+      display: flex;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .hero-img {
+      width: 130px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-media {
+        width: 100%;
+      }
+
+      .hero-img {
+        flex: 1;
+        height: 140px;
+      }
+    }
+
+    form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 760px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: #e2e8f0;
+    }
+
+    .helper {
+      display: block;
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 270px;
+      padding: 0.9rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-top);
+      color: var(--text);
+      font-size: 0.92rem;
+      resize: vertical;
+    }
+
+    textarea:focus {
+      outline: 2px solid var(--accent);
+      border-color: transparent;
+    }
+
+    .actions {
+      margin-top: 1.25rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    button {
+      background: var(--accent);
+      color: #082f49;
+      font-weight: 700;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: 10px;
+      font-size: 0.98rem;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    button:hover {
+      background: var(--accent-hover);
+    }
+
+    .results {
+      margin-top: 1.75rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .error {
+      color: #fca5a5;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      padding: 0.9rem 1rem;
+      border-radius: 10px;
+    }
+
+    .score-box {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .score-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .keywords-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 760px) {
+      .keywords-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+    }
+
+    .tag {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .tag-matched {
+      background: var(--success-bg);
+      color: var(--success-text);
+      border: 1px solid var(--success-border);
+    }
+
+    .tag-missing {
+      background: var(--warn-bg);
+      color: var(--warn-text);
+      border: 1px solid var(--warn-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div>
+        <span class="badge">AI Engineering Portfolio</span>
+        <h1>Breanna Frazier — AI Resume &amp; Role Matcher</h1>
+        <p class="subtitle">Cross-analyze Breanna's resume against target keywords or a full job description using TF-IDF &amp; cosine similarity.</p>
+      </div>
+      <div class="hero-media">
+        <img
+          src="{{ url_for('static', filename='profile.jpg') }}"
+          alt="Breanna Frazier portfolio photo"
+          class="hero-img"
+          onerror="this.style.display='none'"
+        />
+        <img
+          src="{{ url_for('static', filename='banner.jpg') }}"
+          alt="AI project showcase image"
+          class="hero-img"
+          onerror="this.style.display='none'"
+        />
+      </div>
+    </header>
+
+    <form method="POST">
+      <div class="grid">
+        <div>
+          <label for="resume">Breanna Frazier's Resume</label>
+          <span class="helper">Pre-loaded from your resume—edit anytime to test tailored versions.</span>
+          <textarea id="resume" name="resume">{{ resume_input }}</textarea>
+        </div>
+        <div>
+          <label for="target_input">Job Description or Target Keywords</label>
+          <span class="helper">Paste a job posting or keywords (e.g., machine learning, APIs, healthcare data, SEO, Python).</span>
+          <textarea id="target_input" name="target_input" placeholder="Paste a job description or list of keywords here...">{{ target_input }}</textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit">Cross-Analyze Resume</button>
+      </div>
+    </form>
+
+    {% if result %}
+      <section class="results">
+        {% if result.error %}
+          <div class="error">{{ result.error }}</div>
+        {% else %}
+          <div class="score-box">
+            <span class="score-value">{{ result.score }}%</span>
+            <span class="subtitle">Cosine Similarity Score</span>
+          </div>
+
+          <div class="keywords-grid">
+            <div>
+              <h3 style="margin: 0; color: var(--success-text);">Matched Keywords &amp; Phrases</h3>
+              <div class="tags">
+                {% if result.matched %}
+                  {% for term in result.matched %}
+                    <span class="tag tag-matched">{{ term }}</span>
+                  {% endfor %}
+                {% else %}
+                  <span class="subtitle">No overlapping top terms found.</span>
+                {% endif %}
+              </div>
+            </div>
+
+            <div>
+              <h3 style="margin: 0; color: var(--warn-text);">Missing High-Weight Terms</h3>
+              <div class="tags">
+                {% if result.missing %}
+                  {% for term in result.missing %}
+                    <span class="tag tag-missing">{{ term }}</span>
+                  {% endfor %}
+                {% else %}
+                  <span class="subtitle">Strong coverage on top target terms!</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </section>
+    {% endif %}
+  </div>
+</body>
+</html>
