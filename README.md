@@ -10,7 +10,7 @@ An NLP-powered web application that cross-analyzes candidate resumes against tar
 This repository includes both a **live client-side web demo** (hosted on GitHub Pages) and a **Python/Flask + Scikit-learn backend** (`app.py`):
 
 * **Text Preprocessing:** Normalizes casing and filters non-alphanumeric characters while preserving technical tokens (such as `C++` and `C#`).
-* **N-Gram TF-IDF Vectorization:** Uses English stop-word removal and unigram/bigram tokenization (`ngram_range=(1, 2)`) to weight both single keywords and two-word domain phrases (e.g., *"machine learning"*, *"data analytics"*)[cite: 9].
+* **N-Gram TF-IDF Vectorization:** Uses English stop-word removal and unigram/bigram tokenization (`ngram_range=(1, 2)`) to weight both single keywords and two-word domain phrases (e.g., *"machine learning"*, *"data analytics"*).
 * **Cosine Similarity Scoring:** Computes vector alignment between the resume and target job description to output an overall percentage match score
 * **Keyword Gap Analysis:** Extracts the top-weighted target terms and separates them into **Matched Keywords & Phrases** and **Missing High-Weight Terms**
 
